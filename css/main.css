@@ -1,0 +1,55 @@
+.bor {
+    margin-top:50px;
+    border-bottom: 2px dotted black;
+    
+}
+body {
+    background-color: #e0bc8d;
+}
+
+.container h1 {
+    position: relative;
+    transition: all 1s;
+    font-family: 'Pacifico', cursive;
+    font-weight: 500;
+    line-height: 60px;
+    font-size: 50px;
+
+}
+.container h1::after {
+    content: '';
+    position: absolute;
+    left: 31%;
+    top: 40px;
+    background-color: rgba(184, 135, 11, 0.644);
+    width: 265px;
+    height: 20px;
+    z-index: -1;
+}
+.container h1:hover::after {
+    height:40px;
+    top: 20px;
+    transition: .5s;
+}
+.container h2 {
+    font-family: 'Righteous', cursive;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    background: linear-gradient(to right, #3ca55c, #b5ac49);
+    width: fit-content;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+label {
+    font-family: 'PT Sans Caption', sans-serif;
+    font-weight: 600;
+    line-height: 24px;
+
+}
+button {
+    position: relative;
+    left: 50%;
+    transform: translatex(-50%);
+
+}
