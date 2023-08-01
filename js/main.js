@@ -1,58 +1,61 @@
 var bookNameInput = document.getElementById('bookName');
 var webSiteUrlInput = document.getElementById('webSiteUrl');
 
-var books = []
-if(localStorage =! null)
+var bookList=[];
+if(localStorage!=null)
 {
-    books = JSON.parse(localStorage.getItem('storge'));
-    displayBook(books);
+    bookList = JSON.parse(localStorage.getItem('storge'));
+    displayList(bookList)
 }
-function addBook()
-{   
-    if(validateLink()== true){
-            var book = {
-        name:bookNameInput.value,
-        webSite:webSiteUrlInput.value
+function addInformation(){
+    if(validateUrl()== true)
+    {
+        var newBook={
+            name:bookNameInput.value,
+            webSite:webSiteUrlInput.value
         }
-    books.push(book);
-    displayBook();
-    claerForm ();
-    localStorage.setItem('storge',JSON.stringify(books));
+        bookList.push(newBook)
+        displayList()
+        claerForm()
+        console.log(bookList)
+        localStorage.setItem('storge',JSON.stringify(bookList));
     }
-    else{
-        alert('web Site Url Is not validate');
+    else
+    {
+        alert('Web Url is Not Validate')
     }
-}
-function claerForm ()
-{
-    bookNameInput.value = '';
-    webSiteUrlInput.value = '';
 }
 
-function displayBook(arr)
+
+function displayList()
 {
-    var cartona = '';
-    for(var i=0 ; i < books.length ; i++)
-    {
+    var cartona='';
+    for(var i=0;i<bookList.length;i++){
         cartona+=`
         <tr>
             <td>${i+1}</td>
-            <td>${books[i].name}</td>
-            <td><a href="http://${books[i].webSite}" target="_blank" style="background-color: #9eb23b;color:#fff;" rel="noopener noreferrer" class="btn"><i class="fa-regular fa-eye" style="color: #14a800;padding-right: 5px;"></i>Visit</a></td>
+            <td>${bookList[i].name}</td>
+            <td><a href="http://${bookList[i].webSite}" target="_blank" style="background-color: #9eb23b;color:#fff;" rel="noopener noreferrer" class="btn"><i class="fa-regular fa-eye" style="color: #14a800;padding-right: 5px;"></i>Visit</a></td>
             <td><button onclick="deleteBook(${i})" class="btn btn-danger"><i class="fa-solid fa-trash-can" style="color: #ffffff;padding-right: 5px;"></i>Delete</button></td>
         </tr>`
-    } 
+    }
     document.getElementById('tableData').innerHTML = cartona ;
 }
 
-function deleteBook (bookIndex)
+function claerForm()
 {
-    books.splice(bookIndex,1);
-    localStorage.setItem('storge',JSON.stringify(books));
-    displayBook(books);
+    bookNameInput.value='';
+    webSiteUrlInput.value='';
 }
 
-function validateLink(){
-    var regex=/^[a-z]{3,}\.com/;
+function deleteBook(x)
+{
+    bookList.splice(x,1);
+    localStorage.setItem('storge',JSON.stringify(bookList));
+    displayList(bookList);
+}
+function validateUrl()
+{
+    var regex =/^[a-z]{3,}\.co/;
     return regex.test(webSiteUrlInput.value);
 }
