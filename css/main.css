@@ -53,3 +53,31 @@ button {
     transform: translatex(-50%);
 
 }
+@media (max-width: 1399.98px) { 
+    .container h1::after{
+        left: 38%;
+    }
+}
+@media (max-width: 1199.98px) { 
+    .container h1::after{
+        left: 38%;
+    }
+}
+@media (max-width: 991.98px) { 
+    .container h1::after{
+        left: 31%;
+    }
+}
+
+@media (max-width: 767.98px) { 
+    .container h1::after{
+    left: 25%;
+    } 
+}
+
+@media (max-width: 575.98px)  { 
+    .container h1::after{
+        left: 25%;
+    }
+}
+
